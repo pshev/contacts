@@ -1,6 +1,7 @@
-var webpack = require('webpack');
+import webpack from 'webpack'
+import autoprefixer from 'autoprefixer'
 
-module.exports = {
+export default {
   context: __dirname,
   entry: [
     // Add the client which connects to our middleware
@@ -15,8 +16,9 @@ module.exports = {
     publicPath: '/build/',
     filename: 'bundle.js'
   },
+  //try using 'cheap-module-eval-source-map' for a faster recompilation
+  //but that can cause some problems with breakpoints while debugging
   devtool: 'source-map',
-  //devtool: 'cheap-module-eval-source-map',
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
@@ -24,6 +26,14 @@ module.exports = {
   ],
   module: {
     loaders: [
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader!postcss-loader'
+      },
+      {
+        loader: 'url-loader?limit=10000',
+        test:   /\.(gif|jpg|png|woff|woff2|eot|ttf|svg|ico)$/
+      },
       {
         loader: 'react-hot',
         test: /\.jsx?$/,
@@ -39,4 +49,4 @@ module.exports = {
       }
     ]
   }
-};
+}
