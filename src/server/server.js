@@ -1,7 +1,10 @@
 import http from 'http'
 import express from 'express'
+import webpackHotMiddleware from './webpack-hot-middleware'
 
 const app = express()
+
+webpackHotMiddleware(app)
 
 app.use((req, res) => {
   const HTML = `
@@ -12,7 +15,8 @@ app.use((req, res) => {
           <title>React Demo</title>
         </head>
         <body>
-          <div id="root">Hello world</div>
+          <div id="root"></div>
+          <script type="application/javascript" src="/build/bundle.js"></script>
         </body>
       </html>
      `

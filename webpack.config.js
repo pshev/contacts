@@ -1,0 +1,42 @@
+var webpack = require('webpack');
+
+module.exports = {
+  context: __dirname,
+  entry: [
+    // Add the client which connects to our middleware
+    // You can use full urls like 'webpack-hot-middleware/client?path=http://localhost:3000/__webpack_hmr'
+    // useful if you run your app from another point like django
+    'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+    // And then the actual application
+    './src/client/index.js'
+  ],
+  output: {
+    path: __dirname,
+    publicPath: '/build/',
+    filename: 'bundle.js'
+  },
+  devtool: 'source-map',
+  //devtool: 'cheap-module-eval-source-map',
+  plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
+  module: {
+    loaders: [
+      {
+        loader: 'react-hot',
+        test: /\.jsx?$/,
+        exclude: /node_modules/
+      },
+      {
+        loader: "babel",
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        query: {
+          presets: ['es2015', 'stage-0', 'react']
+        }
+      }
+    ]
+  }
+};
