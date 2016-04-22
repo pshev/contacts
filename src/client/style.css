@@ -1,0 +1,35 @@
+#root .contact-list {
+    margin-left: 50px;
+    text-align: center;
+}
+
+#root .contact-list, #root .contact-details {
+    margin-top: 20px;
+}
+
+#root .contact-list > ul > li {
+    cursor: pointer;
+}
+
+#root .contact-details label {
+    margin-right: 5px;
+}
+
+#root .contact-list > ul > li.selected {
+    background-color: rgba(221, 221, 221, 0.46);
+}
+
+#root .contact-list img {
+    width: 70px;
+    height: 70px;
+    margin-left: 20px;
+}
+
+#root .navbar {
+    margin: 10px 0 0 0;
+}
+
+#root .navbar > div {
+    background: white;
+    border-radius: 5px;
+}
