@@ -1,8 +1,10 @@
+import types from './types/contacts'
+
 export const contactSelect = contactId => ({
-  type: 'CONTACT_SELECT',
+  type: types.CONTACT_SELECT,
   contactId
 })
 
 export const contactEditViewSelect = () => ({
-  type: 'CONTACT_EDIT_VIEW_SELECT'
+  type: types.CONTACT_EDIT_VIEW_SELECT
 })

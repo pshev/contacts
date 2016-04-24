@@ -1,6 +1,8 @@
+import types from '../actions/types/contacts'
+
 export default function contacts(state, action) {
   switch(action.type) {
-  	case 'CONTACT_SELECT':
+  	case types.CONTACT_SELECT:
   		return {
         ...state,
         selected: {
@@ -8,7 +10,7 @@ export default function contacts(state, action) {
           beingEdited: false
         }
       }
-    case 'CONTACT_EDIT_VIEW_SELECT':
+    case types.CONTACT_EDIT_VIEW_SELECT:
       return {
         ...state,
         selected: {
