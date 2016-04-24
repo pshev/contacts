@@ -18,6 +18,17 @@ export default function contacts(state, action) {
           beingEdited: true
         }
       }
+    case types.CONTACTS_REQUEST:
+      return {
+        ...state,
+        beingFetched: true
+      }
+    case types.CONTACTS_RECEIVE:
+      return {
+        ...state,
+        all: action.contacts,
+        beingFetched: false
+      }
   	default:
   		return state
   }

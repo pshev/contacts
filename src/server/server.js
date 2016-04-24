@@ -6,6 +6,9 @@ const app = express()
 
 webpackHotMiddleware(app)
 
+app.get('/api/contacts', (req, res) =>
+  res.send(require('../../contacts.json')))
+
 app.use((req, res) => {
   const HTML = `
       <!DOCTYPE html>
