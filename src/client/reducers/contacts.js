@@ -8,6 +8,14 @@ export default function contacts(state, action) {
           beingEdited: false
         }
       }
+    case 'CONTACT_EDIT_VIEW_SELECT':
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          beingEdited: true
+        }
+      }
   	default:
   		return state
   }
