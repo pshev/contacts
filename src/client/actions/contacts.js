@@ -6,6 +6,17 @@ export const contactSelect = contactId => ({
   contactId
 })
 
+export const contactSave = () => ({
+  type: types.CONTACT_SAVE
+})
+
+export const contactChanged = (contactId, fieldName, value) => ({
+  type: types.CONTACT_CHANGE,
+  contactId,
+  fieldName,
+  value
+})
+
 export const contactEditViewSelect = () => ({
   type: types.CONTACT_EDIT_VIEW_SELECT
 })

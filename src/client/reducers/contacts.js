@@ -19,6 +19,26 @@ export default function contacts(state, action) {
           beingEdited: true
         }
       }
+    case types.CONTACT_SAVE:
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          beingEdited: false
+        }
+      }
+    case types.CONTACT_CHANGE:
+      return {
+        ...state,
+        all: state.all.map(contact =>
+          contact.id !== action.contactId
+            ? contact
+            : {
+            ...contact,
+            [action.fieldName]: action.value
+          }
+        )
+      }
     case types.CONTACTS_REQUEST:
       return {
         ...state,
