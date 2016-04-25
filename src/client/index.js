@@ -3,9 +3,11 @@ import App from './containers/app'
 import rootReducer from './reducers'
 import thunkMiddleware from 'redux-thunk'
 import DevTools from './containers/dev-tools'
-import {createStore, compose, applyMiddleware} from 'redux'
 import ReactDOM from 'react-dom'
+import routes from './routes'
+import {createStore, compose, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
+import {Router, browserHistory} from 'react-router'
 
 const store = createStore(
   rootReducer,
@@ -26,7 +28,7 @@ ReactDOM.render(
   <Provider store={store}>
     <div>
       <DevTools />
-      <App />
+      <Router routes={routes} history={browserHistory} />
     </div>
   </Provider>,
   document.getElementById('root')
