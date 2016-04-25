@@ -1,4 +1,5 @@
 import types from '../actions/types/contacts'
+import routerActionTypes from '../actions/types/router'
 
 export default function contacts(state, action) {
   switch(action.type) {
@@ -28,6 +29,14 @@ export default function contacts(state, action) {
         ...state,
         all: action.contacts,
         beingFetched: false
+      }
+    case routerActionTypes.LOCATION_CHANGE:
+      return {
+        ...state,
+        selected: {
+          id: -1,
+          beingEdited: false
+        }
       }
   	default:
   		return state

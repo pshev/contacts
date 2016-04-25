@@ -1,5 +1,4 @@
 import React from 'react'
-import App from './containers/app'
 import rootReducer from './reducers'
 import thunkMiddleware from 'redux-thunk'
 import DevTools from './containers/dev-tools'
@@ -8,11 +7,12 @@ import routes from './routes'
 import {createStore, compose, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import {Router, browserHistory} from 'react-router'
+import {syncHistoryWithStore, routerMiddleware} from 'react-router-redux'
 
 const store = createStore(
   rootReducer,
   compose(
-    applyMiddleware(thunkMiddleware),
+    applyMiddleware(routerMiddleware(browserHistory), thunkMiddleware),
     DevTools.instrument()
   )
 )
@@ -24,11 +24,13 @@ if (module.hot)
     store.replaceReducer(nextRootReducer)
   })
 
+const history = syncHistoryWithStore(browserHistory, store)
+
 ReactDOM.render(
   <Provider store={store}>
     <div>
       <DevTools />
-      <Router routes={routes} history={browserHistory} />
+      <Router routes={routes} history={history} />
     </div>
   </Provider>,
   document.getElementById('root')
