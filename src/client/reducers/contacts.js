@@ -39,6 +39,11 @@ export default function contacts(state, action) {
           }
         )
       }
+    case types.CONTACTS_FILTER_CHANGE:
+      return {
+        ...state,
+        filter: action.value
+      }
     case types.CONTACTS_REQUEST:
       return {
         ...state,

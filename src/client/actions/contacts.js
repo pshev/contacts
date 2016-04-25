@@ -17,6 +17,11 @@ export const contactChanged = (contactId, fieldName, value) => ({
   value
 })
 
+export const filterChange = value => ({
+  type: types.CONTACTS_FILTER_CHANGE,
+  value
+})
+
 export const contactEditViewSelect = () => ({
   type: types.CONTACT_EDIT_VIEW_SELECT
 })
@@ -27,7 +32,7 @@ export const contactsRequest = () => ({
 
 export const contactsReceive = contacts => ({
   type: types.CONTACTS_RECEIVE,
-        contacts
+  contacts
 })
 
 export function fetchContacts() {

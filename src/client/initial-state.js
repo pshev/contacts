@@ -5,6 +5,7 @@ export default {
       "beingEdited": false
     },
     "all": [],
+    filter: '',
     beingFetched: false
   }
 }
