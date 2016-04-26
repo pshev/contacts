@@ -1,7 +1,19 @@
+import React from 'react'
 import App from './components/app'
-import state from './initial-state'
+import initialState from './initial-state'
+import rootReducer from './reducers'
+import {createStore} from './store'
 import ReactDOM from 'react-dom'
 
-const vDOM = App(state)
+const store = createStore(rootReducer)
 
-ReactDOM.render(vDOM, document.getElementById('root'))
+store.subscribe(renderUI)
+
+renderUI()
+
+function renderUI() {
+  ReactDOM.render(
+    <App state={store.getState()} store={store} />,
+    document.getElementById('root')
+  )
+}

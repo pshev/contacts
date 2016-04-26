@@ -5,13 +5,14 @@ import EditContactDetails from './edit-contact-details'
 import Layout from './layout'
 import './../style.css'
 
-const App = ({contacts}) => {
+const App = ({state, store}) => {
+  const {contacts} = state
   const selectedContact = contacts.all
     .find(contact => contact.id === contacts.selected.id)
 
   return (
     <Layout>
-      <ContactList contacts={contacts} />
+      <ContactList contacts={contacts} store={store} />
       {
         selectedContact && (
           contacts.selected.beingEdited
